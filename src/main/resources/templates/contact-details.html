@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Contact Details</title>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="/contacts" class="brand-logo center">Contacts</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li>
+                <a href="/contacts">
+                    <i class="material-icons left">group</i>Contacts list
+                </a>
+            </li>
+            <li>
+                <a href="../form">
+                    <i class="material-icons left">goup_add</i>Add contact
+                </a>
+            </li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+
+            <li>
+
+                <form th:action="@{/contacts/search}" method="post" class="row">
+                    <div class="col s6">
+                        <input id="search" name="searchName" placeholder="search ...">
+                        <label hidden for="search">Search</label>
+                    </div>
+                    <div class="col s6">
+                        <button class="btn btn-primary btn-lg" type="submit">Ok
+                        </button>
+                    </div>
+                </form>
+
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row" style="margin-left: 30%; margin-right: 30%; margin-top: 3em">
+    <div class="col s12 m7">
+        <div class="card">
+            <div class="card-image">
+                <span class="card-title" th:text="${contact.firstName} + ' ' + ${contact.firstName}"></span>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <div class="col 12s">
+                        <p>First name:</p>
+                        <div th:text="${contact.firstName}"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col 12s">
+                        <p>Last name:</p>
+                        <div th:text="${contact.lastName}"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col 12s">
+                        <p>Age:</p>
+                        <div th:text="${contact.age}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+
+                <button class="btn btn-primary btn-lg" type="Edit">Edit Contact
+                </button>
+<!--                <a th:href="'../edit/' + ${contact.id}" style="cursor: pointer">Edit Contact-->
+<!--                </a>-->
+
+                <a th:href="'../delete/' + ${contact.id}" style="cursor: pointer">Delete contact
+                </a>
+
+                <a href="../contacts" class="secondary-content">Back
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
